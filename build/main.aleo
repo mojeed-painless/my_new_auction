@@ -19,12 +19,21 @@ function resolve:
     assert.eq self.caller aleo1nac4kcv8udanqzt732qk6g0lcm7kquyrx99sl2f84wrwl83mp5pqzcsvk8;
     gte r0.amount r1.amount into r2;
     not r2 into r3;
-    ternary r2 r0.owner r1.owner into r4;
-    ternary r2 r0.bidder r1.bidder into r5;
-    ternary r2 r0.amount r1.amount into r6;
-    ternary r2 r0.is_winner r1.is_winner into r7;
-    cast r4 r5 r6 r7 into r8 as Bid.record;
-    output r8 as Bid.record;
+    is.eq r0.amount r1.amount into r4;
+    and r3 r4 into r5;
+    not r4 into r6;
+    and r3 r6 into r7;
+    ternary r5 r0.owner r1.owner into r8;
+    ternary r5 r0.bidder r1.bidder into r9;
+    ternary r5 r0.amount r1.amount into r10;
+    ternary r5 r0.is_winner r1.is_winner into r11;
+    cast r8 r9 r10 r11 into r12 as Bid.record;
+    ternary r2 r0.owner r12.owner into r13;
+    ternary r2 r0.bidder r12.bidder into r14;
+    ternary r2 r0.amount r12.amount into r15;
+    ternary r2 r0.is_winner r12.is_winner into r16;
+    cast r13 r14 r15 r16 into r17 as Bid.record;
+    output r17 as Bid.record;
 
 function finish:
     input r0 as Bid.record;

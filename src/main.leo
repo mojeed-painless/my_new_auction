@@ -42,6 +42,8 @@ program mjd_new_auction.aleo {
         // Resolve the winner of the auction.
         if (first.amount >= second.amount) {
             return first;
+        } else if (first.amount == second.amount) {
+            return first;
         } else {
             return second;
         }
